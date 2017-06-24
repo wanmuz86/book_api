@@ -7,7 +7,7 @@ var bookSchema = new Schema ({
 	title: String,
 	author: String,
 	year: Number,
-	pages:Number,
+	pages:{type:Number, required:true},
 	createdAt:{type:Date, default: Date.now},
 
 })

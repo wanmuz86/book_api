@@ -9,13 +9,17 @@ exports.postBook = function(req,res){
 	book.pages = req.body.pages; 
 
  
- book.save(function(err){
- 	if (err) 
+ book.save(function(err,book){
+ 	if (err) {
  		res.send(err);
+ 	}
+ 	else{
 res.json({message:'Book created !'})
- })
+ 
+}
   
 
+})
 }
 
 exports.getBook = function(req,res) {

@@ -11,7 +11,7 @@ describe('Books', function(){
 			done();
 		})
 	})
-})
+
 
 describe('/GET book', function(){
 	it('it should GET all the books', function(done){
@@ -21,7 +21,7 @@ describe('/GET book', function(){
 			res.should.have.status(200)
 			res.body.should.be.a('array');
 			res.body.length.should.be.eql(0)
-			.done();
+			done();
 		})
 	})
 })
@@ -39,10 +39,12 @@ var book = {
 		.send(book)
 		.end(function(err,res){
 			res.should.have.status(200)
+			res.body.should.be.a('object');
 			res.body.should.have.property('errors')
 			res.body.errors.should.have.property('pages')
-			res.body.errors.should.have.property('kind').eql('required')
-			.done()
+			res.body.errors.pages.should.have.property('kind').eql('required')
+			done()
 		})
 	})
+})
 })
